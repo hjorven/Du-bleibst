@@ -43,14 +43,17 @@
 
     // Tap oder Klick schaltet in den Vollbildmodus (iPad, Mac, Desktop)
     const root = document.documentElement;
-    document.addEventListener('click', () => {
+    function goFullscreen() {
       if (document.fullscreenElement || document.webkitFullscreenElement) return;
       if (root.requestFullscreen) {
         root.requestFullscreen().catch(() => {});
       } else if (root.webkitRequestFullscreen) {
         root.webkitRequestFullscreen();
       }
-    });
+    }
+    document.addEventListener('touchend', goFullscreen);
+    document.addEventListener('click', goFullscreen);
+
     let t;
     window.addEventListener('resize', () => {
       clearTimeout(t);

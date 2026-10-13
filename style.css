@@ -51,8 +51,6 @@ body {
 }
 
 /* iOS/iPadOS loest Klicks auf normalen Flaechen nur mit cursor: pointer aus */
-@media (hover: none) {
-  body {
-    cursor: pointer;
-  }
+body {
+  cursor: pointer;
 }
