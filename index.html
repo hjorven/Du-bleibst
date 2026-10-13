@@ -39,6 +39,17 @@
     }
 
     build();
+
+    // Tap oder Klick schaltet in den Vollbildmodus (iPad, Mac, Desktop)
+    const root = document.documentElement;
+    document.addEventListener('click', () => {
+      if (document.fullscreenElement || document.webkitFullscreenElement) return;
+      if (root.requestFullscreen) {
+        root.requestFullscreen().catch(() => {});
+      } else if (root.webkitRequestFullscreen) {
+        root.webkitRequestFullscreen();
+      }
+    });
     let t;
     window.addEventListener('resize', () => {
       clearTimeout(t);
